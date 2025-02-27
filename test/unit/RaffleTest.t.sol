@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
-
 import {Test, console} from "forge-std/Test.sol";
 import {DeployRaffle} from "../../script/DeployRaffle.s.sol";
 import {Raffle} from "../../src/Raffle.sol";
 import {HelperConfig} from "../../script/HelperConfig.s.sol";
 
 contract RaffleTest is Test {
-
     event RaffleEntered(address indexed player);
     event WinnerPicked(address indexed winner);
 
@@ -38,7 +36,6 @@ contract RaffleTest is Test {
         callbackGasLimit = config.callbackGasLimit;
 
         vm.deal(PLAYER, STARTING_PLAYER_BALANCE);
-
     }
 
     function testRaffleInitializesInOpenState() public view {
@@ -78,4 +75,4 @@ contract RaffleTest is Test {
         vm.prank(PLAYER);
         raffle.enterRaffle{value: entranceFee}();
     }
-} 
+}
